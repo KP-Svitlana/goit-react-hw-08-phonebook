@@ -1,0 +1,21 @@
+.filter {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter_label {
+  font-weight: 500;
+}
+
+.filter__input {
+  margin-top: 10px;
+  width: 150px;
+  border-color: rgb(220, 220, 220);
+  margin-left: 10px;
+  margin-right: 0;
+}
+
+.filter__input:hover,
+.filter__input:focus {
+  border-color: rgb(50, 173, 195);
+}

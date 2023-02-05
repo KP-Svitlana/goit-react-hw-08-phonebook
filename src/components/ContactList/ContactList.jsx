@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import css from './ContactList.module.css';
 
 export const ContactList = ({ data }) => {
   return (
@@ -6,8 +7,9 @@ export const ContactList = ({ data }) => {
       <ul>
         {data.map(el => {
           return (
-            <li key={el.id}>
-              {el.name}:<span>{el.number}</span>
+            <li key={el.id} className={css.contactList__item}>
+              {el.name}:
+              <span className={css.contactList__span}>{el.number}</span>
             </li>
           );
         })}
