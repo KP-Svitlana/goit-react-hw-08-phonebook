@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export const ContactList = ({ data }) => {
   return (
     <div>
@@ -12,4 +14,8 @@ export const ContactList = ({ data }) => {
       </ul>
     </div>
   );
+};
+
+ContactList.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)),
 };

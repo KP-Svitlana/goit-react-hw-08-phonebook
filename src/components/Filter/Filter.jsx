@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export const Filter = ({ value, onFilterChange }) => {
   return (
     <div>
@@ -10,4 +12,9 @@ export const Filter = ({ value, onFilterChange }) => {
       ></input>
     </div>
   );
+};
+
+Filter.propTypes = {
+  value: PropTypes.string,
+  onFilterChange: PropTypes.func.isRequired,
 };
