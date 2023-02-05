@@ -1,8 +1,21 @@
+.contactList__list {
+  padding-left: 30px;
+}
+
 .contactList__item {
   font-weight: 400;
   font-size: 18px;
+  margin-bottom: 10px;
+}
+.contactList__item:last-child {
+  margin-bottom: 0;
 }
 
 .contactList__span {
   margin-left: 10px;
+}
+
+.contactList__btn {
+  margin-left: 10px;
+  cursor: pointer;
 }
