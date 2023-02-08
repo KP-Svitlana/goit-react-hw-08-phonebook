@@ -14,6 +14,17 @@ export class App extends Component {
     filter: '',
   };
 
+  componentDidMount() {
+    const LogContacts = JSON.parse(localStorage.getItem('contacts-log'));
+    if (LogContacts) {
+      this.setState({ contacts: LogContacts });
+    }
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem('contacts-log', JSON.stringify(this.state.contacts));
+  }
+
   addNewContact = ({ name, number }) => {
     const newContact = {
       name: name,
