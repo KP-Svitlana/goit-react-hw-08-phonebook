@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import ContactForm from './ContactForm/ContactForm';
 import { nanoid } from 'nanoid';
 import { Filter } from './Filter/Filter';
@@ -12,20 +12,24 @@ export const App = () => {
     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
   ]);
   const [filter, setFilter] = useState('');
-
-  const logContacts = JSON.parse(localStorage.getItem('contacts-log'));
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
-    if (logContacts) {
+    const logContacts = JSON.parse(localStorage.getItem('contacts-log'));
+    if (!logContacts) {
+      return;
+    } else {
       setContacts(logContacts);
     }
   }, []);
 
   useEffect(() => {
-    if (logContacts === contacts) {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
       return;
+    } else {
+      localStorage.setItem('contacts-log', JSON.stringify(contacts));
     }
-    localStorage.setItem('contacts-log', JSON.stringify(contacts));
   }, [contacts]);
 
   const addNewContact = (name, number) => {
