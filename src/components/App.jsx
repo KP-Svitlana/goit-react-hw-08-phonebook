@@ -5,23 +5,27 @@ import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
 
 export const App = () => {
-  const [contacts, setContacts] = useState([
-    { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-    { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-    { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-    { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-  ]);
+  const logContacts = JSON.parse(localStorage.getItem('contacts-log'));
+
+  const [contacts, setContacts] = useState(
+    logContacts || [
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ]
+  );
   const [filter, setFilter] = useState('');
   const isFirstRender = useRef(true);
 
-  useEffect(() => {
-    const logContacts = JSON.parse(localStorage.getItem('contacts-log'));
-    if (!logContacts) {
-      return;
-    } else {
-      setContacts(logContacts);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const logContacts = JSON.parse(localStorage.getItem('contacts-log'));
+  //   if (!logContacts) {
+  //     return;
+  //   } else {
+  //     setContacts(logContacts);
+  //   }
+  // }, []);
 
   useEffect(() => {
     if (isFirstRender.current) {
