@@ -1,7 +1,11 @@
-import PropTypes from 'prop-types';
 import css from './ContactList.module.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteContact } from 'redux/actions';
 
-export const ContactList = ({ data, onDeleteBtnClick }) => {
+export const ContactList = () => {
+  const dispatch = useDispatch();
+  const data = useSelector(state => state.contacts);
+
   return (
     <div>
       <ul className={css.contactList__list}>
@@ -14,7 +18,7 @@ export const ContactList = ({ data, onDeleteBtnClick }) => {
                 type="button"
                 className={css.contactList__btn}
                 onClick={() => {
-                  onDeleteBtnClick(el.id);
+                  dispatch(deleteContact(el.id));
                 }}
               >
                 Delete
@@ -25,8 +29,4 @@ export const ContactList = ({ data, onDeleteBtnClick }) => {
       </ul>
     </div>
   );
-};
-
-ContactList.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)),
 };

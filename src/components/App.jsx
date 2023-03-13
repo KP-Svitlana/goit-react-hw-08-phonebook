@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import ContactForm from './ContactForm/ContactForm';
-import { nanoid } from 'nanoid';
+
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
 
@@ -19,40 +19,31 @@ export const App = () => {
   const isFirstRender = useRef(true);
 
   // useEffect(() => {
-  //   const logContacts = JSON.parse(localStorage.getItem('contacts-log'));
-  //   if (!logContacts) {
+  //   if (isFirstRender.current) {
+  //     isFirstRender.current = false;
   //     return;
   //   } else {
-  //     setContacts(logContacts);
+  //     localStorage.setItem('contacts-log', JSON.stringify(contacts));
   //   }
-  // }, []);
+  // }, [contacts]);
 
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    } else {
-      localStorage.setItem('contacts-log', JSON.stringify(contacts));
-    }
-  }, [contacts]);
+  // const addNewContact = (name, number) => {
+  //   const newContact = {
+  //     name: name,
+  //     id: nanoid(),
+  //     number: number,
+  //   };
 
-  const addNewContact = (name, number) => {
-    const newContact = {
-      name: name,
-      id: nanoid(),
-      number: number,
-    };
+  //   if (contacts.find(el => el.name === newContact.name)) {
+  //     alert(`${newContact.name} is already in contacts`);
+  //   } else {
+  //     setContacts([newContact, ...contacts]);
+  //   }
+  // };
 
-    if (contacts.find(el => el.name === newContact.name)) {
-      alert(`${newContact.name} is already in contacts`);
-    } else {
-      setContacts([newContact, ...contacts]);
-    }
-  };
-
-  const deleteContact = id => {
-    setContacts(contacts.filter(item => item.id !== id));
-  };
+  // const deleteContact = id => {
+  //   setContacts(contacts.filter(item => item.id !== id));
+  // };
 
   const filterChange = evt => {
     setFilter(evt.target.value);
@@ -76,13 +67,10 @@ export const App = () => {
       }}
     >
       <h1>Phonebook</h1>
-      <ContactForm onSubmit={addNewContact} />
+      <ContactForm />
       <h2>Contacts</h2>
       <Filter value={filter} onFilterChange={filterChange} />
-      <ContactList
-        data={getFilteredContacts()}
-        onDeleteBtnClick={deleteContact}
-      />
+      <ContactList />
     </div>
   );
 };
