@@ -1,12 +1,10 @@
 import css from './ContactList.module.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contactsSlice';
-import { getData } from 'redux/selectors';
 
-export const ContactList = () => {
+export const ContactList = ({ data }) => {
   const dispatch = useDispatch();
 
-  const data = useSelector(getData);
   return (
     <div>
       <ul className={css.contactList__list}>
