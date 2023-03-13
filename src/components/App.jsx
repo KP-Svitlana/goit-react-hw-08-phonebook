@@ -3,18 +3,12 @@ import ContactForm from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { addFilter } from 'redux/filterSlice';
+import { useSelector } from 'react-redux';
 import { getData, getFilter } from 'redux/selectors';
 
 export const App = () => {
-  const dispatch = useDispatch();
   const filter = useSelector(getFilter);
   const contacts = useSelector(getData);
-
-  const filterChange = evt => {
-    dispatch(addFilter(evt.target.value));
-  };
 
   const getFilteredContacts = () => {
     const normalizeFilter = filter.toLowerCase();
@@ -36,7 +30,7 @@ export const App = () => {
       <h1>Phonebook</h1>
       <ContactForm />
       <h2>Contacts</h2>
-      <Filter onFilterChange={filterChange} />
+      <Filter />
       <ContactList data={getFilteredContacts()} />
     </div>
   );
