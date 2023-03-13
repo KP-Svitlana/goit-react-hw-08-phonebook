@@ -18,14 +18,14 @@ export const App = () => {
   const [filter, setFilter] = useState('');
   const isFirstRender = useRef(true);
 
-  // useEffect(() => {
-  //   if (isFirstRender.current) {
-  //     isFirstRender.current = false;
-  //     return;
-  //   } else {
-  //     localStorage.setItem('contacts-log', JSON.stringify(contacts));
-  //   }
-  // }, [contacts]);
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    } else {
+      localStorage.setItem('contacts-log', JSON.stringify(contacts));
+    }
+  }, [contacts]);
 
   // const addNewContact = (name, number) => {
   //   const newContact = {
