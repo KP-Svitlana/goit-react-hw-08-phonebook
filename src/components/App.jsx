@@ -3,20 +3,7 @@ import ContactForm from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
 
-import { useSelector } from 'react-redux';
-import { getData, getFilter } from 'redux/selectors';
-
 export const App = () => {
-  const filter = useSelector(getFilter);
-  const contacts = useSelector(getData);
-
-  const getFilteredContacts = () => {
-    const normalizeFilter = filter.toLowerCase();
-    return contacts.filter(el =>
-      el.name.toLowerCase().includes(normalizeFilter)
-    );
-  };
-
   return (
     <div
       style={{
@@ -31,7 +18,7 @@ export const App = () => {
       <ContactForm />
       <h2>Contacts</h2>
       <Filter />
-      <ContactList data={getFilteredContacts()} />
+      <ContactList />
     </div>
   );
 };
