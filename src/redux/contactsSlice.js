@@ -43,6 +43,7 @@ const contactsSlice = createSlice({
       );
       state.items.splice(index, 1);
     },
+    [deleteContact.rejected]: handleRejected,
   },
 });
 
