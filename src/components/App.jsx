@@ -1,34 +1,22 @@
-import ContactForm from './ContactForm/ContactForm';
+import { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from './Layout/Layout';
 
-import { Filter } from './Filter/Filter';
-import { ContactList } from './ContactList/ContactList';
-import { useDispatch } from 'react-redux';
-
-import { useEffect } from 'react';
-import { fetchContacts } from 'redux/operations';
+const ContactsPage = lazy(() => import('../pages/Contacts'));
+const RegisterPage = lazy(() => import('../pages/Register'));
+const LoginPage = lazy(() => import('../pages/Login'));
 
 export const App = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
-
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        width: 320,
-      }}
-    >
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
-      <ContactList />
+    <div>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="/home" element={<Layout />} />
+          <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Route>
+      </Routes>
     </div>
   );
 };

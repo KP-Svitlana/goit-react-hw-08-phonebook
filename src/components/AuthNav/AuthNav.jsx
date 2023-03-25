@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom';
 
 export const AuthNav = () => {
   return (
-    <>
+    <div className={css.authNavLink__wrap}>
       <NavLink
-        // to="/register"
+        to="/register"
         className={({ isActive }) =>
           isActive ? css.active : css.authNav__link
         }
@@ -13,13 +13,13 @@ export const AuthNav = () => {
         Register
       </NavLink>
       <NavLink
-        // to="/login"
+        to="/login"
         className={({ isActive }) =>
           isActive ? css.active : css.authNav__link
         }
       >
         LogIn
       </NavLink>
-    </>
+    </div>
   );
 };

@@ -1,10 +1,14 @@
+.authNavLink__wrap {
+  padding: 10px;
+}
+
 .authNav__link {
   color: black;
-  font-size: 16px;
+  font-size: 18px;
   margin-right: 10px;
 }
 
 .active {
-  color: orange;
+  color: rgb(0, 21, 255);
   margin-right: 10px;
 }
