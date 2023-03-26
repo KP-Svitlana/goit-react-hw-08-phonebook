@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/490.4643e882.chunk.js","mappings":"oMAAaA,EAAQ,WACnB,OACE,+BACE,kCAGL,C","sources":["pages/Login.js"],"sourcesContent":["export const Login = () => {\n  return (\n    <>\n      <p>LogIN</p>\n    </>\n  );\n};\n"],"names":["Login"],"sourceRoot":""}
