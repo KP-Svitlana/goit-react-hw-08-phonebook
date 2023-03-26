@@ -12,7 +12,7 @@ export const LoginForm = () => {
       email: e.target.elements.email.value,
       password: e.target.elements.password.value,
     };
-    console.log(userData);
+
     dispatch(logInUser(userData));
     form.reset();
   };
