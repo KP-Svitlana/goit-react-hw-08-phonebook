@@ -2,8 +2,12 @@ import css from './Header.module.css';
 import { NavLink } from 'react-router-dom';
 import { AuthNav } from 'components/AuthNav/AuthNav';
 import { UserMenu } from 'components/UserMenu/UserMenu';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from 'redux/authSelectors';
 
 export const Header = () => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
   return (
     <header className={css.header}>
       <div className={css.headerLink__wrap}>
@@ -15,17 +19,18 @@ export const Header = () => {
         >
           Home
         </NavLink>
-        <NavLink
-          to="/contacts"
-          className={({ isActive }) =>
-            isActive ? css.active : css.header__link
-          }
-        >
-          Contacts
-        </NavLink>
+        {isLoggedIn && (
+          <NavLink
+            to="/contacts"
+            className={({ isActive }) =>
+              isActive ? css.active : css.header__link
+            }
+          >
+            Contacts
+          </NavLink>
+        )}
       </div>
-      <UserMenu />
-      <AuthNav />
+      {isLoggedIn ? <UserMenu /> : <AuthNav />}
     </header>
   );
 };
