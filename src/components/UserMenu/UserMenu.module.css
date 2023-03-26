@@ -1,0 +1,19 @@
+.userMenu__wrap {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+}
+
+.userMenu__text {
+  margin: 0 10px 0 0;
+  color: black;
+  font-size: 18px;
+}
+
+.userMenu__btn {
+  font-size: 16px;
+  padding: 5px;
+  background-color: rgba(21, 69, 244, 0.756);
+  border-radius: 5px;
+  cursor: pointer;
+}
