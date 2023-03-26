@@ -15,7 +15,7 @@ export const ContactList = () => {
           return (
             <li key={el.id} className={css.contactList__item}>
               {el.name}:
-              <span className={css.contactList__span}>{el.phone}</span>
+              <span className={css.contactList__span}>{el.number}</span>
               <button
                 type="button"
                 className={css.contactList__btn}

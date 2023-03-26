@@ -34,7 +34,7 @@ const ContactForm = () => {
     ev.preventDefault();
     const newContact = {
       name: `${name}`,
-      phone: `${number}`,
+      number: `${number}`,
     };
     if (contacts.find(el => el.name === name)) {
       alert(`${name} is already in contacts`);
