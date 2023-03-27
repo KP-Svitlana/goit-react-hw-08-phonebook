@@ -39,43 +39,12 @@ const contactsSlice = createSlice({
       .addCase(deleteContact.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        // const index = state.items.findIndex(
-        //   contact => contact.id === action.payload
-        // );
-        // state.items.splice(index, 1);
         state.items = state.items.filter(
-          contact => contact.id !== action.payload
+          contact => contact.id !== action.payload.id
         );
       })
       .addCase(deleteContact.rejected, handleRejected);
   },
-
-  // extraReducers: {
-  //   [fetchContacts.pending]: handelPending,
-  //   [fetchContacts.fulfilled](state, action) {
-  //     state.isLoading = false;
-  //     state.error = null;
-  //     state.items = action.payload;
-  //   },
-  //   [fetchContacts.rejected]: handleRejected,
-  //   [addContact.pending]: handelPending,
-  //   [addContact.fulfilled](state, action) {
-  //     state.isLoading = false;
-  //     state.error = null;
-  //     state.items.push(action.payload);
-  //   },
-  //   [addContact.rejected]: handleRejected,
-  //   [deleteContact.pending]: handelPending,
-  //   [deleteContact.fulfilled](state, action) {
-  //     state.isLoading = false;
-  //     state.error = null;
-  //     const index = state.items.findIndex(
-  //       contact => contact.id === action.payload
-  //     );
-  //     state.items.splice(index, 1);
-  //   },
-  //   [deleteContact.rejected]: handleRejected,
-  // },
 });
 
 export const contactsReducer = contactsSlice.reducer;
